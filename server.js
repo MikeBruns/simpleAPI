@@ -33,18 +33,19 @@ app.get('/', function(request, response) {
 });
 
 
-//Showing list of ingredients
+//REST GET - Get's data
 app.get('/ingredients', function(request, response) {
     response.send(ingredients);
 });
 
 
+//REST POST = Adding new item
 app.post('/ingredients', function(request, response) {
     //express finds the data in the body
     //using jQuery
     var ingredient = request.body;
     
-    if(!ingredient || ingredient.text == ""){
+    if(!ingredient || ingredient.text === ""){
         //No ingredient found
         response.status(500).send({error: "Must have text."});
     } else {
@@ -53,6 +54,37 @@ app.post('/ingredients', function(request, response) {
         response.status(200).send(ingredient);
     }
 });
+
+
+//REST PUT - Updates data
+app.put('/ingredients/:ingredientId', function(request, response){
+    var text = request.body.text;
+    
+    if(!text || text === ""){
+        response.status(500).send({error: "Missing ingredient text"});
+    } else {
+        var objectFound = false;
+        for(var x = 0; x < ingredients.length; x++){
+            var ing = ingredients[x];
+            
+            if(ing.id === request.params.ingredientId){
+                ingredients[x].text = text;
+                objectFound = true;
+                break;
+            }
+        }
+        
+        if(!objectFound){
+            response.status(500).send({error: "Id not found"});
+        } else { 
+            response.status(200).send(ingredients);
+        }
+    }
+});
+
+
+//REST DELETE - Deletes data
+//Not built yet
 
 
 //HTML page ;) ;)
