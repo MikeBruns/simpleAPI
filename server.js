@@ -11,6 +11,10 @@ var ingredients = [
     "id"  :"123",
     "text":"buns"
   },
+    {
+    "id"  :"123",
+    "text":"buns2"
+  },
   {
     "id"  :"345",
     "text":"patty"
@@ -85,6 +89,31 @@ app.put('/ingredients/:ingredientId', function(request, response){
 
 //REST DELETE - Deletes data
 //Not built yet
+app.delete('/ingredients/:ingredientId', function(request, response) {
+    var text = request.body.text;
+    
+    if(!text || text === ""){
+        response.status(500).send({error: "Missing ingredient text"});
+    } else {
+        var objectFound = false;
+        for(var x = 0; x < ingredients.length; x++){
+            var ing = ingredients[x];
+            
+            if(ing.id === request.params.ingredientId){
+                ingredients.splice(x,1);
+                objectFound = true;
+                break;
+            }
+        }
+        
+        if(!objectFound){
+            response.status(500).send({error: "Id not found"});
+        } else { 
+            response.status(200).send({success: "Deleted!"});
+            response.status(200).send(ingredients);
+        }
+    }
+});
 
 
 //HTML page ;) ;)
