@@ -88,7 +88,6 @@ app.put('/ingredients/:ingredientId', function(request, response){
 
 
 //REST DELETE - Deletes data
-//Not built yet
 app.delete('/ingredients/:ingredientId', function(request, response) {
     var text = request.body.text;
     
@@ -109,7 +108,6 @@ app.delete('/ingredients/:ingredientId', function(request, response) {
         if(!objectFound){
             response.status(500).send({error: "Id not found"});
         } else { 
-            response.status(200).send({success: "Deleted!"});
             response.status(200).send(ingredients);
         }
     }
