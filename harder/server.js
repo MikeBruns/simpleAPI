@@ -29,6 +29,21 @@ app.post('/product', function(req, res){
 });
 
 
+// Creating a wishlist
+app.post('/wishlist', function(req, res){
+    var wishList   = new WishList();
+    wishList.title = req.body.title;
+    
+    wishList.save(function(err, newWishList){
+       if(err){
+           res.send(500).send({error:"Could not create new wish list"});
+       } else {
+           res.send(wishList);
+       }
+    });
+});
+
+
 // Display all items in products table
 app.get('/product', function(req, res){
     // Runs asynchronously, so other things can run while querying
