@@ -29,6 +29,19 @@ app.post('/product', function(req, res){
 });
 
 
+// Gets wishlists
+app.get('/wishlist', function(req, res) {
+   WishList.find({}).populate({path:'products', model: 'Product'}).exec(function(err, wishLists) {
+      if(err) {
+          res.status(500).send({error: "Could not fetch wishlists"});
+      } else {
+          res.send(wishLists);
+      }
+   });
+});
+
+
+
 // Creating a wishlist
 app.post('/wishlist', function(req, res){
     var wishList   = new WishList();
@@ -39,6 +52,26 @@ app.post('/wishlist', function(req, res){
            res.send(500).send({error:"Could not create new wish list"});
        } else {
            res.send(wishList);
+       }
+    });
+});
+
+
+// Update a wish list
+app.put('/wishlist/product/add', function(req, res) {
+    Product.findOne({_id: req.body.productId}, function(err, product) {
+       if(err) {
+           res.status(500).send({error: "Could not update wishlist"});
+       } else {
+           WishList.update({_id: req.body.wishListId}, 
+                           {$addToSet: {products: product._id}}, 
+                           function(err, wishList) {
+               if(err) {
+                   res.status(500).send({error: "Could not update wishlist"});
+               } else {
+                   res.send("Added item to wish list!");
+               }
+           });
        }
     });
 });
