@@ -20,7 +20,8 @@ folder and the dependency. A benefit to this is that if someone is trying to imp
 <h4>node modules used</h4>
 
 `express` |
-`body-parser`
+`body-parser`|
+`mongoose`
 
 
 <h2>Helpful web dev tools</h2>
