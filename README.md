@@ -81,3 +81,13 @@ Socket.io - Server side component for websockets <br>
 Pug/Jade - Template engine inspired by HAML <br> 
 Coffee-Script - CoffeeScript compiler <br> 
 Redis - Redis client library <br> 
+
+<h4>Express Notes</h4>
+Express is a web framework for Node.js used to build web applications and API's.  
+It uses MVC concepts
+* M odel - The actual data. Database's, data storage..  
+* V iew - Displaying the user interface. What the user see's  
+* C ontroller - Direct traffic, route, load views..  
+
+
+
