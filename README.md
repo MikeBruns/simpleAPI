@@ -75,9 +75,9 @@ folder and the dependency. A benefit to this is that if someone is trying to imp
 
 
 <h5>Popular Modules</h5>  
-Express - Web development framework 
+Express - Web development framework  <br>
 Connect - HTTP server framework <br> 
-Socket.io = Server side component for websockets <br> 
+Socket.io - Server side component for websockets <br> 
 Pug/Jade - Template engine inspired by HAML <br> 
 Coffee-Script - CoffeeScript compiler <br> 
 Redis - Redis client library <br> 
