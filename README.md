@@ -84,10 +84,13 @@ Redis - Redis client library <br>
 
 <h4>Express Notes</h4>
 Express is a web framework for Node.js used to build web applications and API's.  
-It uses MVC concepts
-* M odel - The actual data. Database's, data storage..  
-* V iew - Displaying the user interface. What the user see's  
-* C ontroller - Direct traffic, route, load views..  
+It uses MVC concepts 
+<ul>
+<li>M odel - The actual data. Database's, data storage..</li>
+<li>V iew - Displaying the user interface. What the user see's</li>
+<li>C ontroller - Direct traffic, route, load views..</li>
+</ul>
+
 
 
 
